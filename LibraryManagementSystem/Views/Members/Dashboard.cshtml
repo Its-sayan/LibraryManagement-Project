@@ -1,0 +1,25 @@
+﻿@model LibraryManagementSystem.Models.Member
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<link href="~/css/dashboardsheet.css" rel="stylesheet" />
+<body>
+    <div class="first">
+        <div class="headline">
+            <h2>Member Dashboard</h2>
+            <a asp-controller="Members" asp-action="Logout" class="logout-button">Logout</a>
+        </div>
+        <div class="dashboard-first">
+            <h3>@Model.Name</h3>
+            @if (TempData["succerss"] != null)
+            {
+                <p class="success-message">@TempData["succerss"]</p>
+            }
+            <div class="button-container">
+                <a asp-controller="Books" asp-action="Index" class="dashboard-button">View Books</a>
+				<a class ="dashboard-button" asp-controller="Members" asp-action="Details" asp-route-id="@Model.MemberId">Profile</a>
+			</div>
+		</div>
+	</div>
+</body>
+

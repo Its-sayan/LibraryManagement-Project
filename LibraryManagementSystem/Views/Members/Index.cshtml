@@ -1,0 +1,70 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Member>
+
+    @{
+    ViewData["Title"] = "Index";
+    }
+    <title>@ViewData["Title"]</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/booksheet.css" rel="stylesheet" />
+    <div class="main">
+        <div class="first mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="text-center">All Members Dashboard</h1>
+            </div>
+
+            <form asp-action="Index" method="get" class="form-inline mb-4 justify-content-center">
+                <div class="form-group mx-sm-3">
+                    <input type="text" name="searchString" class="form-control" placeholder="Search for Members..."
+                        value="@ViewData[" CurrentFilter"]" />
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MembershipDate)</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Password)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                 <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MembershipDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Password)</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-sm btn-outline-primary edit-link" asp-action="Edit"
+                                    asp-route-id="@item.MemberId">Edit</a>
+                                <a class="btn btn-sm btn-outline-secondary" asp-action="Details"
+                                    asp-route-id="@item.MemberId">Details</a>
+                                <a class="btn btn-sm btn-outline-danger delete-link" asp-action="Delete"
+                                    asp-route-id="@item.MemberId">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody> 
+            </table>
+        </div>
+    </div>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Transaction>
+ <title>Transactions</title>
+ <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link href="~/css/issuesheet.css" rel="stylesheet" />
+
+<div class="main">
+    <div class="first">
+        <h1>Issue Books</h1>       
+        <table>
+            <thead>
+                <tr>
+                    <th>Member</th>
+                    <th>Book</th>
+                    <th>Issue Date</th>
+                    <th>Due Date</th>
+                    <th>Return Date</th>
+                    <th>Fine</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var transaction in Model)
+                {
+                    <tr>
+                        <td>@transaction.Member?.Name</td>
+                        <td>@transaction.Book?.Title</td>
+                        <td>@transaction.IssueDate.ToShortDateString()</td>
+                        <td>@transaction.IssueDate.AddDays(14).ToShortDateString()</td>
+                        <td>@transaction.ReturnDate?.ToShortDateString()</td>
+                        <td>@transaction.Fine?.ToString("C")</td>
+                        <td>
+                            @if (transaction.ReturnDate == null)
+                            {
+                                <form asp-action="Return" method="post" style="display:inline;">
+                                    <input type="hidden" name="transactionId" value="@transaction.TransactionId" />
+                                    <button class="button" type="submit">Return</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <span>Already Returned</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+   </div>
+</div>

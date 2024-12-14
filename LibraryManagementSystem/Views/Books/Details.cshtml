@@ -1,0 +1,64 @@
+﻿@model LibraryManagementSystem.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+<title>@ViewData["Title"]</title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link href="~/css/detail_profilesheet.css" rel="stylesheet" />
+<div class="main">
+    <div class="first">
+        <h1>Book Details</h1>
+        <div>
+            <h4>-------------------------------</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Author)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Author)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Isbn)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Isbn)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Category)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.PublishedDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.PublishedDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CopiesAvailable)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CopiesAvailable)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a class="edit-button" asp-action="Edit" asp-route-id="@Model?.BookId">Edit</a> 
+            <a class="edit-button" asp-action="Issue" asp-controller="Transactions" asp-route-bookId="@Model?.BookId">Issue</a> 
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

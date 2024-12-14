@@ -1,0 +1,20 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Librarian>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link href="~/css/dashboardsheet.css" rel="stylesheet" />
+<body>
+    <div class="first">
+        <div class="headline">
+            <h2>Librarian space</h2>
+        </div>
+        <div class="dashboard-first">
+            <div class="button-container">
+                <a class="dashboard-button" asp-controller="Librarians" asp-action="Login">Login For Librarian</a>
+                <a class="dashboard-button" asp-controller="Librarians" asp-action="Register">Register as Librarian</a>
+            </div>
+        </div>
+    </div>
+</body>

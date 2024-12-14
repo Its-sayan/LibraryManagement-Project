@@ -1,0 +1,46 @@
+﻿@model LibraryManagementSystem.Models.Librarian
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<title>@ViewData["Title"]</title>
+<link href="~/css/loginsheet.css" rel="stylesheet" />
+
+<div class="main">
+    <div class="first">
+        <div class="headline">
+            <h1 class="h4">Librarian Login</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @{
+                    if (ViewBag.Message != null)
+                    {
+                        <p class="text-danger">@ViewBag.Message</p>
+                    }
+                }
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" type="password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                    </div>
+                </form>
+                <p class="text-center">
+                    <a asp-controller="Members" asp-action="Register" class="btn-custom">Not Registered Yet? Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>

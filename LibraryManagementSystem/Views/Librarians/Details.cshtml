@@ -1,0 +1,54 @@
+﻿@model LibraryManagementSystem.Models.Librarian
+
+@{
+    ViewData["Title"] = "Details";
+}
+ <title>@ViewData["Title"]</title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link href="~/css/detail_profilesheet.css" rel="stylesheet" />
+<div class="main">
+    <div class="first">
+        <h1>Profile</h1>
+
+        <div>
+            <h4>Librarian</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Role)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Role)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.DateJoined)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.DateJoined)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.LibrarianId" class="edit-button">Edit Profile</a>
+
+        </div>
+    </div>
+</div>

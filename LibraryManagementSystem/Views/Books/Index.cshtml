@@ -1,0 +1,81 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <title>@ViewData["Title"]</title>
+	<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/css/booksheet.css" rel="stylesheet" />
+<div class="main">
+    <div class="first mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-center">Books</h1>
+            <a asp-action="Create" class="btn btn-sm btn-outline-info create-link">Add New Books</a>
+          
+        </div>
+
+        <form asp-action="Index" method="get" class="form-inline mb-4 justify-content-center">
+            <div class="form-group mx-sm-3">
+                <input type="text" name="searchString" class="form-control" placeholder="Search for books..." value="@ViewData["CurrentFilter"]" />
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Title)</th>
+                    <th>@Html.DisplayNameFor(model => model.Author)</th>
+                    <th>@Html.DisplayNameFor(model => model.Isbn)</th>
+                    <th>@Html.DisplayNameFor(model => model.Category)</th>
+                    <th>@Html.DisplayNameFor(model => model.PublishedDate)</th>
+                    <th>@Html.DisplayNameFor(model => model.CopiesAvailable)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Author)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Isbn)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PublishedDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CopiesAvailable)</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-sm btn-outline-primary edit-link" asp-action="Edit" asp-route-id="@item.BookId">Edit</a>
+                                <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.BookId">Details</a>
+                                <a class="btn btn-sm btn-outline-danger delete-link" asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
+                                <a class="btn btn-sm btn-outline-success" asp-action="Issue" asp-controller="Transactions" asp-route-bookId="@item.BookId">Issue</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <a  asp-controller ="Transactions" asp-action="Index" class="btn btn-sm btn-dark issue-link">Member Issues</a>
+        </div>
+    </div>
+</div>
+
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+     <script> 
+         $(document).ready(function() { 
+             var userRole = '@ViewBag.UserRole'; 
+             console.log("UserRole:", userRole); 
+             if (userRole !== 'Librarian') 
+             { 
+                 $('.edit-link').hide(); 
+                 $('.delete-link').hide(); 
+                 $('.create-link').hide(); 
+                 $('.issue-link').hide(); 
+             } 
+         }); 
+     </script> 

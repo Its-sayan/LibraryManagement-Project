@@ -1,0 +1,51 @@
+
+body {
+    margin-bottom: 60px;
+    background-image: url('../imegs/library_background.png');
+    background-size: cover;  /*Ensures the image covers the entire background */
+    background-position: center;  /*Centers the background image */
+    background-attachment: fixed;  /*Fixes the image during scroll */
+    background-repeat: no-repeat;  /*Prevents the image from repeating */
+    height: 100vh;  /*Ensures the background image covers the full viewport height */
+    margin: 0; /*Removes any default margin*/  
+    padding: 0;
+}
+.display-4{
+    color:wheat;
+    text-size-adjust:auto;
+    font-weight:800;
+    
+}
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+.foot {
+    background-color: brown;
+    text-size-adjust: auto;
+    color: coral;
+    position:sticky;
+}
+
+
+.box {
+    padding: 20px;
+    margin: 50px;
+    background-color: wheat;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
