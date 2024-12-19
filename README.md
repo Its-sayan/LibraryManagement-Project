@@ -24,7 +24,7 @@ A Library Management System (LMS) built using ASP.NET Core MVC and SQL Server. T
 - Entity Framework Core
 - SQL Server
 - Azure DevOps
-- Bootstrap (for styling)
+- HTML, CSS, JavaScript and Bootstrap
 
 ## Installation
 1. Clone the repository:
